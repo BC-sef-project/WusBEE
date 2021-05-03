@@ -4,4 +4,9 @@
     <string name="Password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="WusBEE">WusBEE</string>
+    <string name="Log_in">Log In</string>
+    <string name="Email">Email</string>
+    <string name="full_name">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="create_account">Create account</string>
 </resources>

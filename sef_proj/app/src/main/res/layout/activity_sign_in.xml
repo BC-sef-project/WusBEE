@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_marginTop="100dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/WusBEE"
+            android:textColor="@color/honey"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"
+            android:textSize="50sp" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/honey"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/texts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/user_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_img"
+                android:paddingTop="15dp"
+                android:contentDescription="@string/Username"/>
+
+            <EditText
+                android:id="@+id/user_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/Username"
+                android:paddingStart="20dp"
+                android:paddingEnd="40dp"
+                android:layout_toEndOf="@+id/user_icon"
+                android:inputType="text" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/pass_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pass_img"
+                android:paddingTop="15dp"
+                android:contentDescription="@string/Password"/>
+
+            <EditText
+                android:id="@+id/pass_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/Password"
+                android:paddingStart="20dp"
+                android:paddingEnd="40dp"
+                android:layout_toEndOf="@+id/pass_icon"
+                android:inputType="textPassword"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:textColor="@color/yellow_honey"
+        android:background="@color/brown"
+        android:textSize="20sp"
+        android:layout_below="@+id/texts"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>
+
+
+
+

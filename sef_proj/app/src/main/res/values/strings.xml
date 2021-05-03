@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WusBEE</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="WusBEE">WusBEE</string>
+</resources>

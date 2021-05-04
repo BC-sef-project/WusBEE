@@ -1,6 +1,7 @@
 package com.example.wusbee;
 
 public class CustomerModel {
+
     private String FullName;
     private String Username;
     private String Password;
@@ -13,6 +14,17 @@ public class CustomerModel {
         Password = password;
         Email = email;
         PhoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerModel{" +
+                "FullName='" + FullName +
+                ", Username='" + Username +
+                ", Password='" + Password +
+                ", Email='" + Email +
+                ", PhoneNumber=" + PhoneNumber +
+                '}';
     }
 
     public String getFullName() {

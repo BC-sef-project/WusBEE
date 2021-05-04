@@ -2,6 +2,7 @@ package com.example.wusbee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,23 +32,31 @@ public class SignInActivity extends AppCompatActivity {
         PassWord = findViewById(R.id.password);
         PhoneNumber = findViewById(R.id.phone_number);
 
-        CreateAccButton.setOnClickListener(v -> { //add to db
+        CreateAccButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomerModel customer;
 
-            try {
-                CustomerModel customerModel = new CustomerModel(
-                        FullName.getText().toString(),
-                        UserName.getText().toString(),
-                        Email.getText().toString(),
-                        PassWord.getText().toString(),
-                        Integer.parseInt(PhoneNumber.getText().toString())
-                );
-            }catch(Exception exception){
-                    Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show();
-                }
+                try {
+                    customer = new CustomerModel(
+                            FullName.getText().toString(),
+                            UserName.getText().toString(),
+                            Email.getText().toString(),
+                            PassWord.getText().toString(),
+                            Integer.parseInt(PhoneNumber.getText().toString()));
 
-            Toast.makeText(this, "Successful Registration!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this,"Successful Registration", Toast.LENGTH_SHORT).show();
 
+                }catch(Exception exception) {
+                    Toast.makeText(SignInActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+                    customer = new CustomerModel("a", "a", "a", "a", 1);
+                };
+
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(getApplicationContext());
+
+                boolean success = dataBaseHandler.addCustomer(customer);
+                Toast.makeText(SignInActivity.this, "Success = " + success , Toast.LENGTH_SHORT).show();
+            }
         });
-
     }
 }

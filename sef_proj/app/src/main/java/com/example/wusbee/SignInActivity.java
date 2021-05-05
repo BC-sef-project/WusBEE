@@ -2,14 +2,15 @@ package com.example.wusbee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.wusbee.db.CustomerDatabase;
+import com.example.wusbee.db.CustomerModel;
+
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -35,28 +36,21 @@ public class SignInActivity extends AppCompatActivity {
         CreateAccButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomerModel customer;
 
-                try {
-                    customer = new CustomerModel(
-                            FullName.getText().toString(),
-                            UserName.getText().toString(),
-                            Email.getText().toString(),
-                            PassWord.getText().toString(),
-                            Integer.parseInt(PhoneNumber.getText().toString()));
-
-                    Toast.makeText(SignInActivity.this,"Successful Registration", Toast.LENGTH_SHORT).show();
-
-                }catch(Exception exception) {
-                    Toast.makeText(SignInActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
-                    customer = new CustomerModel("a", "a", "a", "a", 1);
-                };
-
-                DataBaseHandler dataBaseHandler = new DataBaseHandler(getApplicationContext());
-
-                boolean success = dataBaseHandler.addCustomer(customer);
-                Toast.makeText(SignInActivity.this, "Success = " + success , Toast.LENGTH_SHORT).show();
+                addCustomerToDb(FullName.getText().toString(),
+                        UserName.getText().toString(),
+                        Email.getText().toString(),
+                        PassWord.getText().toString(),
+                        PhoneNumber.getText().toString());
             }
         });
+    }
+
+    private void addCustomerToDb(String name, String user, String email, String pass, String phone) {
+        CustomerModel customer = new CustomerModel(name, user, email, pass, phone);
+
+        CustomerDatabase db = CustomerDatabase.getDbInstance(this.getApplicationContext());
+        db.customerDao().insertCustomer(customer);
+        Toast.makeText(this.getApplicationContext(), "Account created successful!", Toast.LENGTH_SHORT).show();
     }
 }

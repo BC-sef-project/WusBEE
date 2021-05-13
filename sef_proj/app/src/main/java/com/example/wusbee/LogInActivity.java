@@ -44,6 +44,13 @@ public class LogInActivity extends AppCompatActivity {
                 String user_text = userName.getText().toString();
                 String pass_text = passWord.getText().toString();
 
+                EncryptDecrypt ed = new EncryptDecrypt();
+                try {
+                    pass_text = ed.encrypt(user_text, pass_text);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 handleRegistration(user_text, pass_text);
             }
         });

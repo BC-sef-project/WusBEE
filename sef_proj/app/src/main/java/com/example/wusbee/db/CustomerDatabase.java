@@ -15,11 +15,11 @@ public abstract class CustomerDatabase extends RoomDatabase {
     public abstract CustomerDao customerDao();
     private static CustomerDatabase INSTANCE;
 
-    public static  CustomerDatabase getDbInstance(Context context){
+    public static synchronized CustomerDatabase getDbInstance(Context context){
 
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CustomerDatabase.class, "DB")
-                    .allowMainThreadQueries().build();
+                    .allowMainThreadQueries().fallbackToDestructiveMigration().build();
         }
         return INSTANCE;
     }

@@ -44,6 +44,15 @@ public class SignInActivity extends AppCompatActivity {
                 String password = PassWord.getText().toString();
                 String phone = PhoneNumber.getText().toString();
 
+                EncryptDecrypt ed = new EncryptDecrypt();
+
+                try {
+                    password = ed.encrypt(user, password);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+
+
                 CustomerModel customer = new CustomerModel(name, user, password, email, phone);
 
                 if(customerFieldsAreFull(customer)){

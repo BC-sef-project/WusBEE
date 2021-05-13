@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.wusbee.db.CustomerDao;
 import com.example.wusbee.db.CustomerDatabase;
 import com.example.wusbee.db.CustomerModel;
 
@@ -37,20 +38,54 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                addCustomerToDb(FullName.getText().toString(),
-                        UserName.getText().toString(),
-                        Email.getText().toString(),
-                        PassWord.getText().toString(),
-                        PhoneNumber.getText().toString());
+                String name = FullName.getText().toString();
+                String user = UserName.getText().toString();
+                String email = Email.getText().toString();
+                String password = PassWord.getText().toString();
+                String phone = PhoneNumber.getText().toString();
+
+                CustomerModel customer = new CustomerModel(name, user, password, email, phone);
+
+                if(customerFieldsAreFull(customer)){
+
+                    if(customerNotFoundInDB(customer.getUsername())) {
+                        addCustomerToDb(customer);
+                    }else{
+                        Toast.makeText(SignInActivity.this, "Account already exists!" +
+                                "Choose another username!", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(SignInActivity.this, "Fill all fields!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void addCustomerToDb(String name, String user, String email, String pass, String phone) {
-        CustomerModel customer = new CustomerModel(name, user, email, pass, phone);
-
+    private void addCustomerToDb(CustomerModel customerModel) {
         CustomerDatabase db = CustomerDatabase.getDbInstance(this.getApplicationContext());
-        db.customerDao().insertCustomer(customer);
-        Toast.makeText(this.getApplicationContext(), "Account created successful!", Toast.LENGTH_SHORT).show();
+        db.customerDao().insertCustomer(customerModel);
+        Toast.makeText(this.getApplicationContext(), "Account created successfully!", Toast.LENGTH_SHORT).show();
     }
+
+    private boolean customerFieldsAreFull(CustomerModel customerModel){
+
+        if (customerModel.getFullname().isEmpty() ||
+            customerModel.getUsername().isEmpty() ||
+            customerModel.getEMail().isEmpty() ||
+            customerModel.getPassword().isEmpty() ||
+            customerModel.getPhone_number().isEmpty())
+        return false;
+
+        return true;
+    }
+
+    private boolean customerNotFoundInDB(String username) {
+        CustomerDatabase db = CustomerDatabase.getDbInstance(this.getApplicationContext());
+
+        if(db.customerDao().checkIfCustomerExists(username))
+            return false;
+
+        return true;
+    }
+
 }

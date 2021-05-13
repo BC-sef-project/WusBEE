@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:paddingStart="30dp"
     android:paddingEnd="30dp"
-    android:paddingTop="80dp">
+    android:paddingTop="80dp"
+    android:layout_marginTop="80dp">
 
         <EditText
             android:id="@+id/full_name"

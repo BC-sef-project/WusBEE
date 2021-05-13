@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SeeProfileActivity">
 
     <TextView
+        android:id="@+id/personal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SEE PROFILE"
-        tools:ignore="MissingConstraints" />
+        android:text="See time table"
+        android:onClick="see_time_table"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weekDayTextAppearance="@color/black"
+        
+        />
+
+
+</RelativeLayout>

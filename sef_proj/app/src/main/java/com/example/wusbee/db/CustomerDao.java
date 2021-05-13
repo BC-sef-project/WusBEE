@@ -17,12 +17,17 @@ public interface CustomerDao {
     @Query("SELECT fullname FROM CustomerModel")
     List<String> loadCustomersByFullname();
 
+    @Query("SELECT * FROM CustomerModel WHERE username=:user AND password=:pass")
+    boolean logInCustomer(String user, String pass);
+
+    @Query("SELECT * FROM CustomerModel WHERE username=:user")
+    boolean checkIfCustomerExists(String user);
+
     @Insert
     void insertCustomer(CustomerModel customerModel);
 
     @Delete
     void delete(CustomerModel customerModel);
-
 
 }
 

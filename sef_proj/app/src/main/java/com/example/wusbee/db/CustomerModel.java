@@ -11,37 +11,37 @@ public class CustomerModel {
     public int uid;
 
     @ColumnInfo(name = "fullname") @NonNull
-    private String fullName;
+    private String fullname;
 
     @ColumnInfo(name = "username") @NonNull
-    private String userName;
+    private String username;
 
     @ColumnInfo(name = "password") @NonNull
-    private String passWord;
+    private String password;
 
     @ColumnInfo(name = "email") @NonNull
     private String eMail;
 
     @ColumnInfo(name = "phone_number") @NonNull
-    private String phoneNumber;
+    private String phone_number;
 
-    public CustomerModel( @NonNull String fullName, @NonNull String userName, @NonNull String passWord, @NonNull String eMail, @NonNull String phoneNumber) {
-        this.fullName = fullName;
-        this.userName = userName;
-        this.passWord = passWord;
+    public CustomerModel( @NonNull String fullname, @NonNull String username, @NonNull String password, @NonNull String eMail, @NonNull String phone_number) {
+        this.fullname = fullname;
+        this.username = username;
+        this.password = password;
         this.eMail = eMail;
-        this.phoneNumber = phoneNumber;
+        this.phone_number = phone_number;
     }
 
     @Override
     public String toString() {
         return "CustomerModel{" +
                 "uid=" + uid +
-                ", fullName='" + fullName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", fullName='" + fullname + '\'' +
+                ", userName='" + username + '\'' +
+                ", passWord='" + password + '\'' +
                 ", eMail='" + eMail + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber='" + phone_number + '\'' +
                 '}';
     }
 
@@ -54,30 +54,30 @@ public class CustomerModel {
     }
 
     @NonNull
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
     public void setFullName(@NonNull String fullName) {
-        this.fullName = fullName;
+        this.fullname = fullName;
     }
 
     @NonNull
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public void setUserName(@NonNull String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     @NonNull
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
     public void setPassWord(@NonNull String passWord) {
-        this.passWord = passWord;
+        this.password = passWord;
     }
 
     @NonNull
@@ -90,11 +90,11 @@ public class CustomerModel {
     }
 
     @NonNull
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone_number() {
+        return phone_number;
     }
 
     public void setPhoneNumber(@NonNull String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phone_number = phoneNumber;
     }
 }

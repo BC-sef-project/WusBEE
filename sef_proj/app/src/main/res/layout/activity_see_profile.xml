@@ -3,13 +3,168 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SeeProfileActivity">
+    tools:context=".SeeProfileActivity"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
 
-    <Button
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_profile"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="25sp"
+                android:textColor="@color/brown"
+                android:visibility="invisible"/>
+
+                <ImageView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/profile_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="true" />
+
+            <Button
+                android:id="@+id/edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:textColor="@color/honey"
+                android:layout_below="@id/profile_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/coms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/profile_img"
+                android:layout_marginEnd="50dp">
+
+                <TextView
+                    android:id="@+id/coms_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Coms" />
+
+                <TextView
+                    android:id="@+id/coms_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:text="c" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/subs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/profile_img"
+                android:layout_marginStart="50dp">
+
+                <TextView
+                    android:id="@+id/subs_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Subs"
+                    />
+
+                <TextView
+                    android:id="@+id/subs_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:text="s" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/buttons_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardview_profile"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/create_team"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Create Team"
+            android:textColor="@color/yellow_honey"
+            android:background="@color/brown"
+            android:textSize="15sp"
+            android:layout_marginEnd="5dp"
+            />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/join_team"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Join Team"
+            android:textColor="@color/yellow_honey"
+            android:background="@color/brown"
+            android:textSize="15sp"
+            android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hard_skills"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttons_panel"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="Hardskills"
+        android:drawablePadding="5dp"
+        android:drawableBottom="@drawable/profile_hard_skill"
+        android:clickable="true"
         />
 
+    <TextView
+        android:id="@+id/show_hard_skills"
+        android:paddingStart="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hard_skills"
+        android:visibility="visible"
+        android:text="My hardskills are: "
+        />
 
 </RelativeLayout>

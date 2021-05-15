@@ -16,7 +16,8 @@
             android:hint="@string/full_name"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:drawableEnd="@drawable/fullname"/>
+            android:drawableEnd="@drawable/fullname"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/user_name"
@@ -24,7 +25,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:drawableEnd="@drawable/user_img" />
+            android:drawableEnd="@drawable/user_img"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/email"
